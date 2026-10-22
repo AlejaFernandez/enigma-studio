@@ -1,5 +1,5 @@
 {
-  "version": 1792687608093,
+  "version": 1792687664847,
   "config": {
     "whatsapp": "3003060123",
     "instagram": "enigmastudio.co",
@@ -96,13 +96,13 @@
         "c-naranja"
       ],
       "precio": 20000,
-      "desde": true,
+      "desde": false,
       "medidas": "20 × 18 × 1.8 cm",
       "personalizacion": [
         "Letra o nombre",
         "Color de cada letra"
       ],
-      "descripcion": "Letras grandes para decorar con tu nombre o iniciales, en tipo de letra Coiny. Cada letra mide 20 × 18 cm, es liviana y queda perfecta en cuartos, fiestas, baby showers o mesas de dulces. Elige el color de cada letra. Precio por letra. Resiste hasta 60 °C, ideal para interiores.",
+      "descripcion": "Letras grandes para decorar con tu nombre o iniciales, en tipo de letra Coiny. Cada letra cuesta $20.000 y mide 20 × 18 cm. Son livianas y quedan perfectas en cuartos, fiestas, baby showers o mesas de dulces. Elige el color de cada letra. Resisten hasta 60 °C: ideales para interiores; evita dejarlas al sol directo o dentro del carro.",
       "foto": "fotos/letras-decorativas.jpg",
       "disponible": true,
       "destacado": false,
