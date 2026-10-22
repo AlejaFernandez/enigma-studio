@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Enigma Studio · Catálogo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style id="app-style">
+:root{
+  --bg:#FAFAF7; --surface:#FFFFFF; --ink:#1C1C1E; --muted:#5E5E66; --line:#E4E0EE;
+  --indigo:#2E1A6B; --indigo-ink:#2E1A6B; --indigo-soft:#EEEAF8;
+  --accent:#00E5A0; --accent-ink:#06382A; --hero-ink:#FAFAF7;
+  --danger:#B42318; --shadow:0 18px 40px -24px rgba(46,26,107,.45);
+  --display:"Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --body:"Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --logo-hex:#2E1A6B; --logo-knob:var(--bg); --logo-es:#00E5A0;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#120D26; --surface:#1B1536; --ink:#FAFAF7; --muted:#ABA7BD; --line:#2E2754;
+    --indigo:#2E1A6B; --indigo-ink:#CBBEFF; --indigo-soft:#241C47;
+    --accent:#00E5A0; --accent-ink:#06382A; --hero-ink:#FAFAF7;
+    --danger:#FF8A80; --shadow:0 18px 40px -24px rgba(0,0,0,.8);
+    --logo-hex:#FAFAF7; --logo-es:#2E1A6B;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#120D26; --surface:#1B1536; --ink:#FAFAF7; --muted:#ABA7BD; --line:#2E2754;
+  --indigo:#2E1A6B; --indigo-ink:#CBBEFF; --indigo-soft:#241C47;
+  --accent:#00E5A0; --accent-ink:#06382A; --hero-ink:#FAFAF7;
+  --danger:#FF8A80; --shadow:0 18px 40px -24px rgba(0,0,0,.8);
+    --logo-hex:#FAFAF7; --logo-es:#2E1A6B;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px);scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.6 var(--body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+img{max-width:100%;display:block}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+.wrap{width:min(1120px,100% - 2.5rem);margin-inline:auto}
+
+/* barra superior */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:1rem;min-height:64px}
+.brand{display:flex;align-items:center;gap:.6rem;font:700 1.08rem/1 var(--display);color:var(--indigo-ink);text-decoration:none;letter-spacing:-.01em;background:none;border:0;padding:0;cursor:pointer}
+.brand svg{width:34px;height:34px;flex:none}
+.nav{display:flex;gap:1.25rem;margin-left:auto}
+.nav button{background:none;border:0;padding:.3rem 0;cursor:pointer;color:var(--muted);font-weight:500}
+.nav button:hover{color:var(--ink)}
+.tb-cta{display:flex;gap:.5rem}
+.tb-cta .btn{min-height:40px;padding:.5rem .95rem;font-size:.9rem}
+.tb-cta .btn-ghost{color:var(--indigo-ink)}
+.cta-row{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem}
+.cta-stack{display:grid;gap:.55rem}
+@media (max-width:640px){.nav{display:none}.tb-cta{margin-left:auto}}
+@media (max-width:480px){.tb-cta .lbl{display:none}.tb-cta .btn{padding:.5rem .7rem}}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:44px;padding:.65rem 1.15rem;border-radius:999px;border:1.5px solid transparent;font-weight:600;font-size:.95rem;text-decoration:none;cursor:pointer;white-space:nowrap}
+.btn-accent{background:var(--accent);color:var(--accent-ink)}
+.btn-accent:hover{filter:brightness(1.06)}
+.btn-indigo{background:var(--indigo);color:#FAFAF7}
+.btn-ghost{background:transparent;border-color:currentColor;color:inherit}
+.btn-quiet{background:var(--indigo-soft);color:var(--indigo-ink)}
+.btn-danger{background:transparent;color:var(--danger);border-color:currentColor}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.btn svg{width:18px;height:18px}
+
+/* hero */
+.hero{background:var(--indigo);color:var(--hero-ink);overflow:hidden;position:relative}
+.hero .wrap{display:grid;grid-template-columns:1.25fr .75fr;align-items:center;gap:2rem;padding-block:clamp(3.5rem,9vw,6.5rem)}
+.hero h1{font:700 clamp(2.9rem,8.4vw,6.2rem)/.94 var(--display);letter-spacing:-.035em;margin:0 0 1.4rem;max-width:11ch;text-wrap:balance}
+.hero p{font-size:clamp(1.05rem,1.6vw,1.2rem);max-width:44ch;margin:0 0 2rem;color:#DCD5F5}
+.hero .actions{display:flex;flex-wrap:wrap;gap:.75rem}
+.hero .btn-ghost{color:#FAFAF7}
+.hero-art{justify-self:end;width:100%;max-width:360px}
+.hero-art svg{width:100%;height:auto;overflow:visible}
+.hex-draw{stroke-dasharray:1200;stroke-dashoffset:1200;animation:draw 1.6s .15s cubic-bezier(.6,0,.2,1) forwards}
+.hex-pop{opacity:0;transform-origin:center;transform-box:fill-box;animation:pop .6s 1.35s ease-out forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.hex-draw{stroke-dashoffset:0}.hex-pop{opacity:1}}
+@media (max-width:760px){.hero .wrap{grid-template-columns:1fr}.hero-art{position:absolute;right:-70px;top:24px;width:220px;opacity:.28;pointer-events:none}}
+
+/* barra de edición */
+.adminbar{background:var(--accent);color:var(--accent-ink)}
+.adminbar .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem;padding-block:.65rem}
+.adminbar strong{font-family:var(--display);margin-right:auto}
+.adminbar .btn{min-height:38px;padding:.45rem .95rem;font-size:.88rem}
+.adminbar .btn-indigo{background:#2E1A6B;color:#FAFAF7}
+.adminbar .btn-ghost{color:var(--accent-ink)}
+.adminbar .pending{font-size:.9rem;font-weight:600}
+
+/* catálogo */
+section{padding-block:clamp(3rem,7vw,5rem)}
+.section-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:1rem 2rem;margin-bottom:1.75rem}
+.section-head h2{font:700 clamp(2rem,4.4vw,3rem)/1 var(--display);letter-spacing:-.025em;margin:0 0 .5rem;color:var(--indigo-ink)}
+.section-head p{margin:0;color:var(--muted);max-width:52ch}
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-bottom:2rem}
+.chip{border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:.45rem .95rem;cursor:pointer;font-size:.9rem;font-weight:500;min-height:38px}
+.chip[aria-pressed="true"]{background:var(--indigo);border-color:var(--indigo);color:#FAFAF7}
+.search{margin-left:auto;display:flex;align-items:center;gap:.4rem;border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:0 .9rem;min-height:40px}
+.search input{border:0;background:none;outline:none;width:12rem;max-width:44vw;padding:.4rem 0}
+.search svg{width:16px;height:16px;color:var(--muted)}
+@media (max-width:640px){.search{margin-left:0;width:100%}.search input{width:100%;max-width:none}}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:2.25rem 1.5rem}
+.item{position:relative;display:flex;flex-direction:column;text-align:left;background:none;border:0;padding:0;cursor:pointer;color:inherit}
+.item .ph{aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:var(--indigo-soft);display:grid;place-items:center;transition:transform .25s ease,box-shadow .25s ease}
+.item .ph img{width:100%;height:100%;object-fit:cover}
+.item .ph svg{width:64px;height:64px;color:var(--indigo-ink);opacity:.35}
+.item:hover .ph{transform:translateY(-3px);box-shadow:var(--shadow)}
+.item .cat{margin-top:.9rem;font-size:.82rem;color:var(--muted);font-weight:500}
+.item h3{font:600 1.2rem/1.25 var(--display);margin:.15rem 0 .35rem;letter-spacing:-.01em}
+.item .row{display:flex;flex-direction:column;gap:.35rem;margin-bottom:.3rem}
+.item .row h3{margin:.15rem 0 0}
+.item .price{font:700 1.15rem/1 var(--display);color:var(--indigo-ink);white-space:nowrap}
+.item .price small,.dlg-price small{font:500 .78rem var(--body);color:var(--muted);margin-right:.25rem}
+.item .meta{font-size:.88rem;color:var(--muted)}
+.badge{position:absolute;top:.75rem;left:.75rem;display:inline-flex;align-items:center;gap:.35rem;background:var(--accent);color:var(--accent-ink);font-size:.78rem;font-weight:600;padding:.25rem .6rem;border-radius:999px}
+.badge.off{background:var(--ink);color:var(--bg)}
+.cell{display:flex;flex-direction:column}
+.hidden-item .ph{opacity:.45}
+.item-tools{display:flex;gap:.4rem;margin-top:.7rem}
+.item-tools .btn{min-height:34px;padding:.3rem .8rem;font-size:.85rem}
+
+.empty{border:2px dashed var(--line);border-radius:20px;padding:clamp(2rem,6vw,3.5rem);text-align:center;color:var(--muted)}
+.empty h3{font:600 1.35rem var(--display);color:var(--ink);margin:0 0 .5rem}
+.empty p{margin:0 auto 1.25rem;max-width:44ch}
+
+/* cómo pedir */
+.steps-band{background:var(--indigo-soft)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;counter-reset:s;margin:0;padding:0;list-style:none}
+.steps li{counter-increment:s}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:52px;height:46px;margin-bottom:1rem;font:700 1.25rem var(--display);color:var(--accent-ink);background:var(--accent);clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%)}
+.steps h3{font:600 1.2rem/1.25 var(--display);margin:0 0 .4rem}
+.steps p{margin:0;color:var(--muted)}
+@media (max-width:760px){.steps{grid-template-columns:1fr}}
+
+footer{background:var(--indigo);color:#DCD5F5;padding-block:2.75rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.5rem;align-items:center}
+footer .brand{color:#FAFAF7;--logo-hex:#FAFAF7;--logo-knob:#2E1A6B;--logo-es:#2E1A6B;cursor:default}
+footer .tag{margin:.4rem 0 0;font-size:.92rem}
+footer .links{display:flex;flex-wrap:wrap;gap:.75rem}
+footer .btn-ghost{color:#FAFAF7;min-height:40px}
+
+/* diálogos */
+dialog{border:0;padding:0;border-radius:22px;background:var(--surface);color:var(--ink);width:min(720px,100vw - 1.5rem);max-height:calc(100dvh - 2rem);box-shadow:0 30px 80px -20px rgba(0,0,0,.5)}
+dialog::backdrop{background:rgba(18,13,38,.6);backdrop-filter:blur(3px)}
+dialog[open]{animation:dlg .22s ease-out}
+@keyframes dlg{from{opacity:0;transform:translateY(12px)}}
+.dlg-body{padding:clamp(1.25rem,4vw,2rem);overflow:auto;max-height:calc(100dvh - 2rem)}
+.dlg-close{position:absolute;top:.75rem;right:.75rem;width:40px;height:40px;border-radius:50%;border:0;background:var(--surface);color:var(--ink);cursor:pointer;display:grid;place-items:center;box-shadow:0 2px 10px rgba(0,0,0,.15);z-index:2}
+.dlg-close svg{width:18px;height:18px}
+.detail{display:grid;grid-template-columns:1fr 1fr;gap:1.75rem}
+.detail .ph{border-radius:16px;overflow:hidden;background:var(--indigo-soft);aspect-ratio:1;display:grid;place-items:center}
+.detail .ph img{width:100%;height:100%;object-fit:cover}
+.detail .ph svg{width:80px;height:80px;color:var(--indigo-ink);opacity:.35}
+.detail h2{font:700 1.75rem/1.1 var(--display);letter-spacing:-.02em;margin:.2rem 0 .6rem}
+.dlg-price{font:700 1.5rem var(--display);color:var(--indigo-ink);margin:0 0 1rem}
+.facts{margin:0 0 1rem;display:grid;grid-template-columns:auto 1fr;gap:.35rem 1rem;font-size:.95rem}
+.facts dt{color:var(--muted)}
+.facts dd{margin:0;font-weight:500}
+.desc{margin:0 0 1.25rem;color:var(--muted);white-space:pre-line}
+.opt-title{font:600 1rem var(--display);margin:0 0 .5rem}
+.opts{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1rem}
+.opts .chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.detail textarea{width:100%;min-height:84px;border:1.5px solid var(--line);border-radius:12px;padding:.7rem .85rem;background:var(--bg);resize:vertical;margin-bottom:1rem}
+.detail .btn{width:100%}
+.hint{font-size:.84rem;color:var(--muted);margin:.6rem 0 0}
+@media (max-width:640px){.detail{grid-template-columns:1fr}.detail .ph{aspect-ratio:4/3}}
+
+.form h2{font:700 1.5rem var(--display);margin:0 0 1.25rem;letter-spacing:-.015em}
+.form .fields{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form .full{grid-column:1/-1}
+.form label{display:flex;flex-direction:column;gap:.35rem;font-size:.9rem;font-weight:500}
+.form label span.help{font-weight:400;color:var(--muted);font-size:.82rem}
+.form input[type=text],.form input[type=number],.form input[type=tel],.form textarea{border:1.5px solid var(--line);border-radius:12px;padding:.65rem .8rem;background:var(--bg);width:100%}
+.form textarea{min-height:90px;resize:vertical}
+.form .check{flex-direction:row;align-items:center;gap:.6rem;font-weight:500}
+.form .check input{width:20px;height:20px;accent-color:var(--indigo)}
+.form .help{font-weight:400;color:var(--muted);font-size:.82rem;display:block}
+.form .lbl-t{font-size:.9rem;font-weight:500}
+.form .opts{margin:.6rem 0 .5rem}
+.newcat{display:flex;gap:.5rem}
+.newcat input{flex:1}
+.photo{display:flex;gap:1rem;align-items:center}
+.photo .thumb{width:96px;height:96px;border-radius:12px;background:var(--indigo-soft);overflow:hidden;flex:none;display:grid;place-items:center;color:var(--muted);font-size:.78rem;text-align:center}
+.photo .thumb img{width:100%;height:100%;object-fit:cover}
+.photo .btns{display:flex;flex-wrap:wrap;gap:.5rem}
+.photo .btn{min-height:38px;font-size:.88rem}
+.form .foot{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:.6rem;margin-top:1.5rem}
+@media (max-width:560px){.form .fields{grid-template-columns:1fr}}
+
+.toast{visibility:hidden;position:fixed;left:50%;bottom:calc(1.25rem + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(140%);background:var(--ink);color:var(--bg);padding:.75rem 1.1rem;border-radius:12px;font-size:.92rem;z-index:50;transition:transform .25s ease;max-width:calc(100% - 2rem)}
+.toast.show{visibility:visible;transform:translateX(-50%) translateY(0)}
+.fab.btn{background:var(--ink);color:var(--bg)}
+.fab{position:fixed;right:1.1rem;bottom:calc(1.1rem + env(safe-area-inset-bottom,0px));z-index:30;box-shadow:var(--shadow)}
+[hidden]{display:none!important}
+.swatch{display:inline-block;width:14px;height:14px;border-radius:50%;border:1px solid var(--line);box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);flex:none}
+.dots{display:flex;align-items:center;gap:5px;margin-top:.45rem}
+.dots .more{font-size:.78rem;color:var(--muted);margin-left:2px}
+.color-chip{display:inline-flex;align-items:center;gap:.45rem}
+.color-chip .swatch{width:16px;height:16px}
+.opts .chip[aria-checked="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.color-list{display:grid;gap:.5rem;margin-top:.5rem}
+.color-row{display:grid;grid-template-columns:44px 1fr auto;gap:.5rem;align-items:center}
+.color-row input[type=color]{width:44px;height:40px;padding:2px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);cursor:pointer}
+.color-row .btn{min-height:38px;font-size:.86rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script id="catalog-data" type="application/json">{"version": 0, "config": {"whatsapp": "3003060123", "instagram": "enigmastudio.co", "intro": "Piezas personalizadas hechas en Barranquilla. Elige un diseño del catálogo o cuéntanos tu idea y la hacemos a tu medida."}, "productos": []}</script>
+<script id="app-script">
+(function(){
+"use strict";
+var HEAD='<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n<title>Enigma Studio · Catálogo</title>\n<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap">\n';
+var DRAFT_KEY='enigma-catalogo-borrador-v1';
+
+var ICON={
+  logo:'<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M11 3.5h18l9.5 16.5L29 36.5H11L1.5 20z" fill="var(--logo-hex)"/><circle cx="37" cy="20" r="4.2" fill="var(--logo-knob)"/><text x="18.6" y="25.6" text-anchor="middle" font-family="Space Grotesk,system-ui,sans-serif" font-weight="700" font-size="14.5" fill="var(--logo-es)" letter-spacing="-.5">ES</text></svg>',
+  wa:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3z"/></svg>',
+  ig:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>',
+  search:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>',
+  close:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>',
+  hex:'<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M11 4h18l9 16-9 16H11L2 20z"/></svg>',
+  heroArt:'<svg viewBox="0 0 360 340" aria-hidden="true"><path class="hex-draw" d="M95 14h170l85 156-85 156H95L10 170z" fill="none" stroke="#00E5A0" stroke-width="3"/><path class="hex-draw" d="M120 60h120l60 110-60 110H120L60 170z" fill="none" stroke="#8C7BD6" stroke-width="2" style="animation-delay:.35s"/><g class="hex-pop"><path d="M150 115h60l30 55-30 55h-60l-30-55z" fill="#00E5A0"/><circle cx="240" cy="170" r="13" fill="#2E1A6B"/></g></svg>'
+};
+
+function h(tag,props){
+  var el=document.createElement(tag);
+  if(props){for(var k in props){var v=props[k];if(v==null||v===false)continue;
+    if(k==='class')el.className=v;
+    else if(k==='html')el.innerHTML=v;
+    else if(k.slice(0,2)==='on')el.addEventListener(k.slice(2),v);
+    else el.setAttribute(k,v===true?'':v);}}
+  for(var i=2;i<arguments.length;i++)add(el,arguments[i]);
+  return el;
+}
+function add(el,kid){if(kid==null||kid===false)return;if(Array.isArray(kid)){kid.forEach(function(k){add(el,k)});return;}el.append(kid.nodeType?kid:String(kid));}
+function clone(o){return JSON.parse(JSON.stringify(o));}
+function uid(){return 'p'+Date.now().toString(36)+Math.random().toString(36).slice(2,7);}
+var fmt=new Intl.NumberFormat('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0});
+function money(n){return fmt.format(n);}
+
+function normalize(d){
+  d=d&&typeof d==='object'?d:{};
+  d.config=Object.assign({whatsapp:'',instagram:'',intro:''},d.config||{});
+  if(!Array.isArray(d.config.colores))d.config.colores=[
+    {id:'c-blanco',nombre:'Blanco',hex:'#FFFFFF'},{id:'c-azul',nombre:'Azul cielo',hex:'#8ECDF5'},
+    {id:'c-rosado',nombre:'Rosado',hex:'#F6B3CC'},{id:'c-amarillo',nombre:'Amarillo',hex:'#FFE07A'},
+    {id:'c-morado',nombre:'Morado',hex:'#B79CEB'},{id:'c-negro',nombre:'Negro',hex:'#1C1C1E'}];
+  d.productos=Array.isArray(d.productos)?d.productos:[];
+  d.productos.forEach(function(p){if(!Array.isArray(p.categorias))p.categorias=(p.categoria||'').trim()?[p.categoria.trim()]:[];delete p.categoria;if(!Array.isArray(p.colores))p.colores=[];});
+  d.version=d.version||0;
+  return d;
+}
+var published;
+try{published=normalize(JSON.parse(document.getElementById('catalog-data').textContent));}catch(e){published=normalize({});}
+var state=clone(published);
+var canEdit=false,artifactApi=null,editMode=false,dirty=false,publishing=false;
+var filtro='Todo',busqueda='';
+
+/* ---------- WhatsApp / Instagram ---------- */
+function waNumber(){var n=(state.config.whatsapp||'').replace(/\D/g,'');if(n.length===10&&n.charAt(0)==='3')n='57'+n;return n.length>=10?n:'';}
+function waLink(text){var n=waNumber();return n?'https://wa.me/'+n+'?text='+encodeURIComponent(text):null;}
+function igLink(){var u=(state.config.instagram||'').replace(/^@/,'').trim();return u?'https://instagram.com/'+encodeURIComponent(u):null;}
+function igDm(){var u=(state.config.instagram||'').replace(/^@/,'').trim();return u?'https://ig.me/m/'+encodeURIComponent(u):null;}
+function copiar(t){
+  var ok=false;
+  try{var ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';document.body.append(ta);ta.select();ok=document.execCommand('copy');ta.remove();}catch(e){}
+  if(!ok&&navigator.clipboard){navigator.clipboard.writeText(t).catch(function(){});ok=true;}
+  return ok;
+}
+function abrirIG(text){
+  var u=igDm();if(!u)return;
+  var copiado=text?copiar(text):false;
+  window.open(u,'_blank','noopener');
+  if(copiado)toast('Mensaje copiado. Pégalo en el chat de Instagram.');
+}
+function contactBtn(base,text,cls,igCls,compact){
+  var out=[],wa=waLink(text),ig=igDm();
+  var waL=compact?'WhatsApp':base+' por WhatsApp',igL=compact?'Instagram':base+' por Instagram';
+  if(wa)out.push(h('a',{class:'btn '+(cls||'btn-accent'),href:wa,target:'_blank',rel:'noopener','aria-label':waL,html:ICON.wa},h('span',{class:'lbl'},waL)));
+  if(ig)out.push(h('button',{class:'btn '+(wa?(igCls||'btn-ghost'):(cls||'btn-accent')),type:'button','aria-label':igL,html:ICON.ig,onclick:function(){abrirIG(text);}},h('span',{class:'lbl'},igL)));
+  return out.length?out:null;
+}
+
+/* ---------- borrador y publicación ---------- */
+function saveDraft(){
+  dirty=true;
+  try{localStorage.setItem(DRAFT_KEY,JSON.stringify({base:published.version,data:state}));}
+  catch(e){toast('El borrador es muy grande para guardarse en este navegador. Descarga catalogo.json pronto para no perderlo.');}
+}
+function restoreDraft(){
+  try{var raw=localStorage.getItem(DRAFT_KEY);if(!raw)return;var d=JSON.parse(raw);
+    if(d&&d.base===published.version&&d.data){state=normalize(d.data);dirty=true;editMode=true;}
+    else localStorage.removeItem(DRAFT_KEY);
+  }catch(e){}
+}
+function discard(){
+  askConfirm('¿Descartar los cambios sin publicar?','Descartar cambios').then(function(ok){
+    if(!ok)return;state=clone(published);dirty=false;
+    try{localStorage.removeItem(DRAFT_KEY);}catch(e){}
+    render();toast('Cambios descartados.');
+  });
+}
+function buildDocument(data){
+  var css=document.getElementById('app-style').textContent;
+  var js=document.getElementById('app-script').textContent;
+  var json=JSON.stringify(data).replace(/</g,'\\u003c').replace(/\u2028/g,'\\u2028').replace(/\u2029/g,'\\u2029');
+  return '<!doctype html>\n<html lang="es">\n<head>\n'+HEAD+'<style id="app-style">'+css+'</style>\n</head>\n<body>\n<div id="root"></div>\n<script id="catalog-data" type="application/json">'+json+'<\/script>\n<script id="app-script">'+js+'<\/script>\n</body>\n</html>\n';
+}
+function publicar(){
+  var next=clone(state);next.version=Date.now();
+  var blob=new Blob([JSON.stringify(next,null,2)],{type:'application/json'});
+  var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='catalogo.json';
+  document.body.append(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href);},2000);
+  toast('Descargado. Súbelo a site/ en GitHub y la página se actualiza sola.');
+}
+function publicarClaude(){
+  if(!artifactApi||publishing)return;
+  publishing=true;render();
+  var next=clone(state);next.version=Date.now();
+  var html=buildDocument(next);
+  var backup=null;try{backup=localStorage.getItem(DRAFT_KEY);localStorage.removeItem(DRAFT_KEY);}catch(e){}
+  artifactApi.publish(html).then(function(){
+    toast('Publicado. La página se va a recargar con los cambios.');
+  },function(err){
+    publishing=false;
+    try{if(backup)localStorage.setItem(DRAFT_KEY,backup);}catch(e){}
+    var code=err&&err.code;
+    if(code==='conflict')toast('Se publicó otra versión al mismo tiempo; la página se va a recargar.');
+    else if(code==='not_granted'||code==='not_writer')toast('Esta vista no tiene permiso para publicar.');
+    else toast('No se pudo publicar'+(err&&err.message?': '+err.message:'')+'. Tus cambios siguen guardados aquí.');
+    render();
+  });
+}
+
+/* ---------- capacidades ---------- */
+function cargar(){
+  fetch('catalogo.json',{cache:'no-store'}).then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(d){
+    published=normalize(d);state=clone(published);
+  }).catch(function(){}).then(function(){
+    canEdit=(location.hash==='#editar');
+    if(canEdit){editMode=true;restoreDraft();}
+    render();
+  });
+}
+
+/* ---------- render ---------- */
+var root=document.getElementById('root');
+function scrollToId(id){var el=document.getElementById(id);if(el)el.scrollIntoView();}
+
+function categorias(){
+  var seen={},out=[];
+  state.productos.forEach(function(p){(p.categorias||[]).forEach(function(c){c=(c||'').trim();if(c&&!seen[c.toLowerCase()]){seen[c.toLowerCase()]=1;out.push(c);}});});
+  return out;
+}
+function visibles(){
+  var q=busqueda.trim().toLowerCase();
+  return state.productos.filter(function(p){
+    if(!editMode&&p.disponible===false)return false;
+    if(filtro!=='Todo'&&!(p.categorias||[]).some(function(c){return c.trim().toLowerCase()===filtro.toLowerCase();}))return false;
+    if(q){var hay=[p.nombre,(p.categorias||[]).join(' '),p.descripcion,p.medidas,(p.personalizacion||[]).join(' ')].join(' ').toLowerCase();if(hay.indexOf(q)<0)return false;}
+    return true;
+  }).sort(function(a,b){return (b.destacado?1:0)-(a.destacado?1:0);});
+}
+function coloresDe(p){var m={};state.config.colores.forEach(function(c){m[c.id]=c;});return (p.colores||[]).map(function(id){return m[id];}).filter(Boolean);}
+function swatch(c){return h('span',{class:'swatch',style:'background:'+c.hex,'aria-hidden':'true'});}
+function dotsFor(p){
+  var cs=coloresDe(p);if(!cs.length)return null;
+  var box=h('div',{class:'dots','aria-label':'Colores: '+cs.map(function(c){return c.nombre;}).join(', ')});
+  cs.slice(0,7).forEach(function(c){box.append(swatch(c));});
+  if(cs.length>7)box.append(h('span',{class:'more'},'+'+(cs.length-7)));
+  return box;
+}
+function priceNode(p,cls){
+  if(p.precio==null||p.precio==='')return h('span',{class:cls},h('small',null,'Precio'),'a cotizar');
+  return h('span',{class:cls},p.desde?h('small',null,'desde'):null,money(Number(p.precio)));
+}
+
+function render(){
+  var y=window.scrollY;
+  root.textContent='';
+  var c=state.config;
+
+  /* topbar */
+  root.append(h('header',{class:'topbar'},h('div',{class:'wrap'},
+    h('button',{class:'brand',type:'button','aria-label':'Enigma Studio, ir al inicio',onclick:function(){window.scrollTo(0,0);},html:ICON.logo+'<span>Enigma Studio</span>'}),
+    h('nav',{class:'nav','aria-label':'Secciones'},
+      h('button',{type:'button',onclick:function(){scrollToId('catalogo');}},'Catálogo'),
+      h('button',{type:'button',onclick:function(){scrollToId('como-pedir');}},'Cómo pedir')),
+    h('div',{class:'tb-cta'},contactBtn('','Hola Enigma Studio 👋 Quiero cotizar una pieza personalizada.',null,null,true))
+  )));
+
+  /* barra de edición */
+  if(canEdit&&editMode){
+    root.append(h('div',{class:'adminbar',role:'region','aria-label':'Edición del catálogo'},h('div',{class:'wrap'},
+      h('strong',null,'Modo edición'),
+      dirty?h('span',{class:'pending'},'Cambios sin publicar'):null,
+      h('button',{class:'btn btn-indigo',type:'button',onclick:function(){openForm(null);}},'Agregar producto'),
+      h('button',{class:'btn btn-ghost',type:'button',onclick:openSettings},'Ajustes'),
+      dirty?h('button',{class:'btn btn-ghost',type:'button',onclick:discard},'Descartar'):null,
+      dirty?h('button',{class:'btn btn-indigo',type:'button',onclick:publicar},'Descargar catalogo.json'):null,
+      h('button',{class:'btn btn-ghost',type:'button',onclick:function(){editMode=false;render();}},'Ver como cliente')
+    )));
+    if(!waNumber())root.append(h('div',{class:'wrap'},h('p',{class:'hint',style:'margin:1rem 0 0'},'Aún no hay número de WhatsApp: los pedidos llegan solo por Instagram. Agrégalo en Ajustes para ofrecer los dos.')));
+  }
+
+  /* hero */
+  root.append(h('section',{class:'hero','aria-labelledby':'hero-t'},h('div',{class:'wrap'},
+    h('div',null,
+      h('h1',{id:'hero-t'},'Tu idea, hecha realidad.'),
+      c.intro?h('p',null,c.intro):null,
+      h('div',{class:'actions'},
+        h('button',{class:'btn btn-accent',type:'button',onclick:function(){scrollToId('catalogo');}},'Ver catálogo'),
+        contactBtn('Escríbenos','Hola Enigma Studio 👋 Tengo una idea para una pieza personalizada: ','btn-ghost','btn-ghost'))),
+    h('div',{class:'hero-art',html:ICON.heroArt})
+  )));
+
+  /* catálogo */
+  var cats=categorias();
+  if(filtro!=='Todo'&&cats.map(function(x){return x.toLowerCase();}).indexOf(filtro.toLowerCase())<0)filtro='Todo';
+  var lista=visibles();
+  var sec=h('section',{id:'catalogo','aria-labelledby':'cat-t'},h('div',{class:'wrap'},
+    h('div',{class:'section-head'},h('div',null,
+      h('h2',{id:'cat-t'},'Catálogo'),
+      h('p',null,'Precios en pesos colombianos. Cualquier pieza se puede ajustar en tamaño, color o texto.')))
+  ));
+  var inner=sec.firstChild;
+  if(state.productos.length){
+    var filters=h('div',{class:'filters',role:'group','aria-label':'Filtrar por categoría'});
+    ['Todo'].concat(cats).forEach(function(cat){
+      filters.append(h('button',{class:'chip',type:'button','aria-pressed':String(filtro===cat),onclick:function(){filtro=cat;render();}},cat));
+    });
+    var inp=h('input',{type:'search',placeholder:'Buscar',value:busqueda,'aria-label':'Buscar en el catálogo',oninput:function(e){busqueda=e.target.value;renderGrid();}});
+    filters.append(h('label',{class:'search',html:ICON.search},inp));
+    inner.append(filters);
+  }
+  var gridHost=h('div');inner.append(gridHost);
+  function renderGrid(){
+    gridHost.textContent='';
+    var l=visibles();
+    if(!state.productos.length||(!editMode&&!state.productos.some(function(p){return p.disponible!==false;}))){
+      if(canEdit&&editMode)gridHost.append(h('div',{class:'empty'},h('h3',null,'Agrega tu primer producto'),h('p',null,'Ponle foto, precio, medidas y las opciones de personalización. Nada se ve en la página hasta que subas el catalogo.json a GitHub.'),h('button',{class:'btn btn-indigo',type:'button',onclick:function(){openForm(null);}},'Agregar producto')));
+      else gridHost.append(h('div',{class:'empty'},h('h3',null,'Estamos armando el catálogo'),h('p',null,'Mientras tanto, cuéntanos qué necesitas y te enviamos boceto y precio.'),h('div',{class:'cta-row'},contactBtn('Cotiza','Hola Enigma Studio 👋 Quiero cotizar una pieza personalizada.'))));
+      return;
+    }
+    if(!l.length){gridHost.append(h('div',{class:'empty'},h('h3',null,'Nada coincide con esa búsqueda'),h('p',null,'Prueba con otra palabra o pídelo a la medida.'),h('div',{class:'cta-row'},contactBtn('Pídelo','Hola Enigma Studio 👋 Busco algo que no vi en el catálogo: '))));return;}
+    var g=h('div',{class:'grid'});
+    l.forEach(function(p){g.append(card(p));});
+    gridHost.append(g);
+  }
+  renderGrid();
+  root.append(sec);
+
+  /* cómo pedir */
+  root.append(h('section',{id:'como-pedir',class:'steps-band','aria-labelledby':'como-t'},h('div',{class:'wrap'},
+    h('div',{class:'section-head'},h('div',null,h('h2',{id:'como-t'},'Cómo pedir'),h('p',null,'Tres pasos, todo por mensaje.'))),
+    h('ol',{class:'steps'},
+      h('li',null,h('h3',null,'Elige o cuéntanos tu idea'),h('p',null,'Escoge una pieza del catálogo o envíanos una foto, un logo o un dibujo de lo que imaginas.')),
+      h('li',null,h('h3',null,'Recibe boceto y precio'),h('p',null,'Te mostramos cómo quedará antes de fabricarla, con el precio final y la fecha de entrega.')),
+      h('li',null,h('h3',null,'Confirma y recibe'),h('p',null,'Con el 50% de anticipo empezamos. Entrega en unos 3 días: envío, domicilio o recogida en un punto acordado.')))
+  )));
+
+  /* footer */
+  var ig=igLink();
+  root.append(h('footer',null,h('div',{class:'wrap'},
+    h('div',null,h('div',{class:'brand',html:ICON.logo+'<span>Enigma Studio</span>'}),h('p',{class:'tag'},'Convertimos tus ideas en creaciones únicas. Barranquilla, Colombia.')),
+    h('div',{class:'links'},
+      waLink('Hola Enigma Studio 👋')?h('a',{class:'btn btn-ghost',href:waLink('Hola Enigma Studio 👋'),target:'_blank',rel:'noopener',html:ICON.wa},'WhatsApp'):null,
+      ig?h('a',{class:'btn btn-ghost',href:ig,target:'_blank',rel:'noopener',html:ICON.ig},'@'+state.config.instagram.replace(/^@/,'')):null)
+  )));
+
+  if(canEdit&&!editMode)root.append(h('button',{class:'btn fab',type:'button',onclick:function(){editMode=true;render();}},dirty?'Editar catálogo · cambios sin publicar':'Editar catálogo'));
+  root.append(toastEl);
+  window.scrollTo(0,y);
+}
+
+function card(p){
+  var editing=canEdit&&editMode;
+  var it=h('div',{class:'cell'+(p.disponible===false?' hidden-item':'')});
+  var btn=h('button',{class:'item',type:'button','aria-label':'Ver '+p.nombre,onclick:function(){openDetail(p);}},
+    h('div',{class:'ph'},p.foto?h('img',{src:p.foto,alt:p.nombre,loading:'lazy'}):h('span',{html:ICON.hex})),
+    p.disponible===false?h('span',{class:'badge off'},'Oculto'):(p.destacado?h('span',{class:'badge'},'Destacado'):null),
+    h('div',{class:'cat'},(p.categorias&&p.categorias.length)?p.categorias.join(', '):'\u00a0'),
+    h('div',{class:'row'},h('h3',null,p.nombre),priceNode(p,'price')),
+    h('div',{class:'meta'},[p.medidas,(p.personalizacion&&p.personalizacion.length)?p.personalizacion.length+(p.personalizacion.length===1?' opción':' opciones')+' de personalización':null].filter(Boolean).join(' · ')),
+    dotsFor(p)
+  );
+  it.append(btn);
+  if(editing)it.append(h('div',{class:'item-tools'},
+    h('button',{class:'btn btn-quiet',type:'button',onclick:function(){openForm(p);}},'Editar'),
+    h('button',{class:'btn btn-quiet',type:'button',onclick:function(){p.disponible=p.disponible===false;saveDraft();render();}},p.disponible===false?'Mostrar':'Ocultar'),
+    h('button',{class:'btn btn-danger',type:'button',onclick:function(){askConfirm('¿Eliminar “'+p.nombre+'” del catálogo?','Eliminar').then(function(ok){if(!ok)return;state.productos=state.productos.filter(function(x){return x.id!==p.id;});saveDraft();render();});}},'Eliminar')));
+  return it;
+}
+
+/* ---------- diálogos ---------- */
+function openDialog(content,labelId){
+  var dlg=h('dialog',{'aria-labelledby':labelId});
+  var close=h('button',{class:'dlg-close',type:'button','aria-label':'Cerrar',html:ICON.close,onclick:function(){dlg.close();}});
+  dlg.append(close,h('div',{class:'dlg-body'},content));
+  dlg.addEventListener('close',function(){dlg.remove();});
+  dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close();});
+  document.body.append(dlg);dlg.showModal();
+  return dlg;
+}
+
+function openDetail(p){
+  var elegidas=[];
+  var nota=h('textarea',{placeholder:'Cuéntanos el detalle: nombre, texto, colores, fecha que la necesitas…','aria-label':'Detalles del pedido'});
+  var opts=null;
+  if(p.personalizacion&&p.personalizacion.length){
+    opts=h('div',{class:'opts',role:'group','aria-label':'Opciones de personalización'});
+    p.personalizacion.forEach(function(o){
+      var b=h('button',{class:'chip',type:'button','aria-pressed':'false',onclick:function(){
+        var i=elegidas.indexOf(o);if(i<0)elegidas.push(o);else elegidas.splice(i,1);
+        b.setAttribute('aria-pressed',String(i<0));}},o);
+      opts.append(b);
+    });
+  }
+  var colorSel=null,colorPick=null,cs=coloresDe(p);
+  if(cs.length){
+    var cBox=h('div',{class:'opts',role:'radiogroup','aria-label':'Color'});
+    cs.forEach(function(c){
+      var b=h('button',{class:'chip color-chip',type:'button',role:'radio','aria-checked':'false',onclick:function(){
+        colorSel=c.nombre;Array.prototype.forEach.call(cBox.children,function(x){x.setAttribute('aria-checked','false');});b.setAttribute('aria-checked','true');}},swatch(c),c.nombre);
+      cBox.append(b);
+    });
+    colorPick=[h('p',{class:'opt-title'},cs.length===1?'Color disponible':'Elige el color'),cBox];
+  }
+  function mensaje(){
+    var precio=(p.precio==null||p.precio==='')?'precio a cotizar':((p.desde?'desde ':'')+money(Number(p.precio)));
+    var t='Hola Enigma Studio 👋 Me interesa: '+p.nombre+(p.medidas?' ('+p.medidas+')':'')+', '+precio+'.';
+    if(colorSel)t+='\nColor: '+colorSel+'.';
+    if(elegidas.length)t+='\nPersonalización: '+elegidas.join(', ')+'.';
+    if(nota.value.trim())t+='\nDetalles: '+nota.value.trim();
+    return t;
+  }
+  var cta=h('div',{class:'cta-stack'});
+  if(waNumber())cta.append(h('button',{class:'btn btn-accent',type:'button',html:ICON.wa,onclick:function(){window.open(waLink(mensaje()),'_blank','noopener');}},'Pedir por WhatsApp'));
+  if(igDm())cta.append(h('button',{class:'btn '+(waNumber()?'btn-ghost':'btn-accent'),type:'button',html:ICON.ig,onclick:function(){abrirIG(mensaje());}},'Pedir por Instagram'));
+  var facts=h('dl',{class:'facts'});
+  if(p.medidas)facts.append(h('dt',null,'Medidas'),h('dd',null,p.medidas));
+  if(p.categorias&&p.categorias.length)facts.append(h('dt',null,p.categorias.length>1?'Categorías':'Categoría'),h('dd',null,p.categorias.join(', ')));
+  var body=h('div',{class:'detail'},
+    h('div',{class:'ph'},p.foto?h('img',{src:p.foto,alt:p.nombre}):h('span',{html:ICON.hex})),
+    h('div',null,
+      h('h2',{id:'dlg-t'},p.nombre),
+      h('p',{class:'dlg-price'},priceNode(p,'')),
+      facts.childNodes.length?facts:null,
+      p.descripcion?h('p',{class:'desc'},p.descripcion):null,
+      colorPick,
+      opts?h('p',{class:'opt-title'},'Personalízalo'):null,
+      opts,
+      nota,
+      cta,
+      h('p',{class:'hint'},(waNumber()&&igDm()?'Elige por dónde prefieres escribirnos. En Instagram el mensaje se copia para que solo lo pegues. ':'')+'Antes de fabricar te enviamos el boceto y el precio final para que lo apruebes.'))
+  );
+  openDialog(body,'dlg-t');
+}
+
+function resizeImage(file){
+  return new Promise(function(resolve,reject){
+    var url=URL.createObjectURL(file);var img=new Image();
+    img.onload=function(){
+      var max=900,w=img.naturalWidth,hh=img.naturalHeight,s=Math.min(1,max/Math.max(w,hh));
+      var cv=document.createElement('canvas');cv.width=Math.round(w*s);cv.height=Math.round(hh*s);
+      var ctx=cv.getContext('2d');ctx.fillStyle='#FAFAF7';ctx.fillRect(0,0,cv.width,cv.height);ctx.drawImage(img,0,0,cv.width,cv.height);
+      URL.revokeObjectURL(url);resolve(cv.toDataURL('image/jpeg',0.8));
+    };
+    img.onerror=function(){URL.revokeObjectURL(url);reject(new Error('imagen'));};
+    img.src=url;
+  });
+}
+
+function field(label,input,help,full){return h('label',{class:full?'full':null},label,help?h('span',{class:'help'},help):null,input);}
+
+function openForm(p){
+  var nuevo=!p;
+  var d=p?clone(p):{id:uid(),nombre:'',categorias:[],colores:[],precio:'',desde:false,medidas:'',personalizacion:[],descripcion:'',foto:'',disponible:true,destacado:false};
+  var selCats=(d.categorias||[]).slice();
+  function tiene(c){return selCats.some(function(x){return x.toLowerCase()===c.toLowerCase();});}
+  var catBox=h('div',{class:'opts',role:'group','aria-label':'Categorías'});
+  var fNewCat=h('input',{type:'text',placeholder:'Nueva categoría, ej. Charms','aria-label':'Nueva categoría',onkeydown:function(e){if(e.key==='Enter'){e.preventDefault();addCat();}}});
+  function addCat(){var v=fNewCat.value.trim();if(!v)return;if(!tiene(v))selCats.push(v);fNewCat.value='';paintCats();}
+  function paintCats(){
+    catBox.textContent='';
+    var all=categorias();selCats.forEach(function(c){if(!all.some(function(x){return x.toLowerCase()===c.toLowerCase();}))all.push(c);});
+    if(!all.length)catBox.append(h('span',{class:'help'},'Aún no hay categorías. Crea la primera abajo.'));
+    all.forEach(function(c){var on=tiene(c);catBox.append(h('button',{class:'chip',type:'button','aria-pressed':String(on),onclick:function(){if(on)selCats=selCats.filter(function(x){return x.toLowerCase()!==c.toLowerCase();});else selCats.push(c);paintCats();}},c));});
+  }
+  paintCats();
+  var selCols=(d.colores||[]).filter(function(id){return state.config.colores.some(function(c){return c.id===id;});});
+  var colBox=h('div',{class:'opts',role:'group','aria-label':'Colores disponibles'});
+  function paintCols(){
+    colBox.textContent='';
+    if(!state.config.colores.length){colBox.append(h('span',{class:'help'},'Aún no tienes colores. Créalos en Ajustes.'));return;}
+    state.config.colores.forEach(function(c){var on=selCols.indexOf(c.id)>=0;
+      colBox.append(h('button',{class:'chip color-chip',type:'button','aria-pressed':String(on),onclick:function(){
+        if(on)selCols=selCols.filter(function(x){return x!==c.id;});else selCols.push(c.id);paintCols();}},swatch(c),c.nombre));});
+    if(state.config.colores.length>1)colBox.append(h('button',{class:'chip',type:'button',onclick:function(){
+      selCols=selCols.length===state.config.colores.length?[]:state.config.colores.map(function(c){return c.id;});paintCols();}},selCols.length===state.config.colores.length?'Quitar todos':'Todos'));
+  }
+  paintCols();
+  var colField=h('div',{class:'full'},h('div',{class:'lbl-t'},'Colores disponibles'),h('span',{class:'help'},'Marca en qué colores se puede pedir. Déjalo sin marcar si no aplica, por ejemplo si lleva varios colores.'),colBox);
+  var catField=h('div',{class:'full'},h('div',{class:'lbl-t'},'Categorías'),h('span',{class:'help'},'Marca una o varias. El producto aparece en cada sección que elijas.'),catBox,h('div',{class:'newcat'},fNewCat,h('button',{class:'btn btn-quiet',type:'button',onclick:addCat},'Agregar')));
+  var fNombre=h('input',{type:'text',required:true,value:d.nombre,maxlength:'80'});
+  var fPrecio=h('input',{type:'number',min:'0',step:'500',inputmode:'numeric',value:d.precio===''||d.precio==null?'':String(d.precio),placeholder:'Ej. 15000'});
+  var fDesde=h('input',{type:'checkbox'});fDesde.checked=!!d.desde;
+  var fMedidas=h('input',{type:'text',value:d.medidas,placeholder:'Ej. 8 × 6 × 2 cm'});
+  var fPers=h('textarea',{placeholder:'Nombre o iniciales\nColor a elección\nTamaño grande'});fPers.value=(d.personalizacion||[]).join('\n');
+  var fDesc=h('textarea',{placeholder:'Qué es, para qué sirve, material, cuidados…'});fDesc.value=d.descripcion||'';
+  var fVis=h('input',{type:'checkbox'});fVis.checked=d.disponible!==false;
+  var fDest=h('input',{type:'checkbox'});fDest.checked=!!d.destacado;
+  var thumb=h('div',{class:'thumb'});
+  function paintThumb(){thumb.textContent='';if(d.foto)thumb.append(h('img',{src:d.foto,alt:''}));else thumb.append('Sin foto');}
+  paintThumb();
+  var file=h('input',{type:'file',accept:'image/*',class:'sr',onchange:function(e){
+    var f=e.target.files&&e.target.files[0];if(!f)return;
+    resizeImage(f).then(function(src){d.foto=src;paintThumb();rmBtn.hidden=false;},function(){toast('No se pudo leer esa imagen. Prueba con JPG o PNG.');});
+  }});
+  var rmBtn=h('button',{class:'btn btn-quiet',type:'button',onclick:function(){d.foto='';paintThumb();rmBtn.hidden=true;}},'Quitar foto');
+  rmBtn.hidden=!d.foto;
+  var form=h('form',{class:'form',novalidate:true},
+    h('h2',{id:'form-t'},nuevo?'Agregar producto':'Editar producto'),
+    h('div',{class:'fields'},
+      field('Nombre',fNombre,null,true),
+      catField,
+      colField,
+      field('Precio (COP)',fPrecio,'Vacío = a cotizar'),
+      field('Medidas',fMedidas,'Largo × ancho × alto'),
+      h('label',{class:'check full'},fDesde,'Mostrar como “desde” (el precio puede subir según la personalización)'),
+      field('Opciones de personalización',fPers,'Una opción por línea. El cliente las puede marcar al pedir.',true),
+      field('Descripción',fDesc,null,true),
+      h('div',{class:'full'},h('div',{style:'font-size:.9rem;font-weight:500;margin-bottom:.35rem'},'Foto'),
+        h('div',{class:'photo'},thumb,h('div',{class:'btns'},h('label',{class:'btn btn-quiet'},d.foto?'Cambiar foto':'Subir foto',file),rmBtn))),
+      h('label',{class:'check'},fVis,'Visible en el catálogo'),
+      h('label',{class:'check'},fDest,'Destacado (sale primero)')
+    ),
+    h('div',{class:'foot'},
+      h('button',{class:'btn btn-ghost',type:'button',onclick:function(){dlg.close();}},'Cancelar'),
+      h('button',{class:'btn btn-indigo',type:'submit'},nuevo?'Agregar al catálogo':'Guardar cambios'))
+  );
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var nombre=fNombre.value.trim();
+    if(!nombre){fNombre.focus();toast('El producto necesita un nombre.');return;}
+    addCat();d.nombre=nombre;d.categorias=selCats.slice();d.colores=state.config.colores.filter(function(c){return selCols.indexOf(c.id)>=0;}).map(function(c){return c.id;});delete d.categoria;
+    var pr=fPrecio.value.trim();d.precio=pr===''?'':Math.max(0,Math.round(Number(pr)));
+    d.desde=fDesde.checked;d.medidas=fMedidas.value.trim();
+    d.personalizacion=fPers.value.split('\n').map(function(s){return s.trim();}).filter(Boolean);
+    d.descripcion=fDesc.value.trim();d.disponible=fVis.checked;d.destacado=fDest.checked;
+    if(nuevo){d.creado=Date.now();state.productos.unshift(d);}
+    else{state.productos=state.productos.map(function(x){return x.id===d.id?d:x;});}
+    saveDraft();dlg.close();render();
+    toast(nuevo?'Producto agregado. Descarga catalogo.json para publicarlo.':'Cambios guardados. Descarga catalogo.json para publicarlos.');
+  });
+  var dlg=openDialog(form,'form-t');
+  fNombre.focus();
+}
+
+function openSettings(){
+  var c=state.config;
+  var fWa=h('input',{type:'tel',value:c.whatsapp,placeholder:'Ej. 300 123 4567'});
+  var fIg=h('input',{type:'text',value:c.instagram,placeholder:'enigmastudio.co'});
+  var fIntro=h('textarea',null);fIntro.value=c.intro||'';
+  var cols=clone(c.colores||[]);
+  var colList=h('div',{class:'color-list'});
+  function paintColList(){
+    colList.textContent='';
+    cols.forEach(function(col,i){
+      colList.append(h('div',{class:'color-row'},
+        h('input',{type:'color',value:col.hex,'aria-label':'Tono de '+(col.nombre||'color'),oninput:function(e){col.hex=e.target.value;}}),
+        h('input',{type:'text',value:col.nombre,placeholder:'Nombre del color','aria-label':'Nombre del color',oninput:function(e){col.nombre=e.target.value;}}),
+        h('button',{class:'btn btn-quiet',type:'button',onclick:function(){cols.splice(i,1);paintColList();}},'Quitar')));
+    });
+  }
+  paintColList();
+  var form=h('form',{class:'form'},
+    h('h2',{id:'set-t'},'Ajustes de la página'),
+    h('div',{class:'fields'},
+      field('WhatsApp',fWa,'Número de 10 dígitos; se agrega el +57 solo. Déjalo vacío para usar solo Instagram.'),
+      field('Instagram',fIg,'Solo el usuario, sin @. Déjalo vacío para usar solo WhatsApp.'),
+      field('Texto de bienvenida',fIntro,'Aparece debajo del título principal.',true),
+      h('div',{class:'full'},h('div',{class:'lbl-t'},'Colores'),h('span',{class:'help'},'Los colores que manejas. En cada producto marcas cuáles aplican.'),colList,
+        h('button',{class:'btn btn-quiet',type:'button',style:'margin-top:.6rem',onclick:function(){cols.push({id:uid(),nombre:'',hex:'#8ECDF5'});paintColList();var ins=colList.querySelectorAll('input[type=text]');ins[ins.length-1].focus();}},'Agregar color'))),
+    h('div',{class:'foot'},
+      h('button',{class:'btn btn-ghost',type:'button',onclick:function(){dlg.close();}},'Cancelar'),
+      h('button',{class:'btn btn-indigo',type:'submit'},'Guardar ajustes'))
+  );
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var colores=cols.filter(function(x){return x.nombre.trim();}).map(function(x){return {id:x.id,nombre:x.nombre.trim(),hex:x.hex};});
+    var ids=colores.map(function(x){return x.id;});
+    state.productos.forEach(function(p){p.colores=(p.colores||[]).filter(function(id){return ids.indexOf(id)>=0;});});
+    state.config={whatsapp:fWa.value.trim(),instagram:fIg.value.trim().replace(/^@/,''),intro:fIntro.value.trim(),colores:colores};
+    saveDraft();dlg.close();render();toast('Ajustes guardados. Descarga catalogo.json para publicarlos.');
+  });
+  var dlg=openDialog(form,'set-t');
+}
+
+function askConfirm(msg,okLabel){
+  return new Promise(function(resolve){
+    var res=false;
+    var body=h('div',{class:'form'},h('h2',{id:'cf-t'},msg),h('div',{class:'foot'},
+      h('button',{class:'btn btn-ghost',type:'button',onclick:function(){dlg.close();}},'Cancelar'),
+      h('button',{class:'btn btn-danger',type:'button',onclick:function(){res=true;dlg.close();}},okLabel)));
+    var dlg=openDialog(body,'cf-t');
+    dlg.style.width='min(440px, 100vw - 1.5rem)';
+    dlg.addEventListener('close',function(){resolve(res);});
+  });
+}
+
+var toastEl=h('div',{class:'toast',role:'status','aria-live':'polite'});var toastT;
+function toast(msg){toastEl.textContent=msg;toastEl.classList.add('show');clearTimeout(toastT);toastT=setTimeout(function(){toastEl.classList.remove('show');},3800);}
+
+render();
+cargar();
+window.addEventListener('hashchange',function(){if(location.hash==='#editar'&&!canEdit){canEdit=true;editMode=true;restoreDraft();render();}});
+var hash=(location.hash||'').slice(1);
+if(hash==='catalogo'||hash==='como-pedir')setTimeout(function(){scrollToId(hash);},50);
+})();
+</script>
+</body>
+</html>
