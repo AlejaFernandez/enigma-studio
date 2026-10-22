@@ -1,9 +1,82 @@
 {
-  "version": 0,
+  "version": 1792686968348,
   "config": {
     "whatsapp": "3003060123",
     "instagram": "enigmastudio.co",
-    "intro": "Piezas personalizadas hechas en Barranquilla. Elige un diseño del catálogo o cuéntanos tu idea y la hacemos a tu medida."
+    "intro": "Piezas personalizadas hechas en Barranquilla. Elige un diseño del catálogo o cuéntanos tu idea y la hacemos a tu medida.",
+    "colores": [
+      {
+        "id": "c-blanco",
+        "nombre": "Blanco",
+        "hex": "#FFFFFF"
+      },
+      {
+        "id": "c-azul",
+        "nombre": "Azul cielo",
+        "hex": "#8ECDF5"
+      },
+      {
+        "id": "c-rosado",
+        "nombre": "Rosado",
+        "hex": "#F6B3CC"
+      },
+      {
+        "id": "c-amarillo",
+        "nombre": "Amarillo",
+        "hex": "#FFE07A"
+      },
+      {
+        "id": "c-morado",
+        "nombre": "Morado",
+        "hex": "#B79CEB"
+      },
+      {
+        "id": "c-negro",
+        "nombre": "Negro",
+        "hex": "#1C1C1E"
+      },
+      {
+        "id": "c-rojo",
+        "nombre": "Rojo",
+        "hex": "#E5484D"
+      },
+      {
+        "id": "c-naranja",
+        "nombre": "Naranja",
+        "hex": "#FF9F43"
+      }
+    ]
   },
-  "productos": []
+  "productos": [
+    {
+      "id": "p-llavero-nombre-flor-estrella",
+      "nombre": "Llavero con nombre Flor/Estrella",
+      "categorias": [
+        "Llaveros"
+      ],
+      "colores": [
+        "c-blanco",
+        "c-azul",
+        "c-rosado",
+        "c-amarillo",
+        "c-morado",
+        "c-negro",
+        "c-rojo",
+        "c-naranja"
+      ],
+      "precio": 6000,
+      "desde": true,
+      "medidas": "",
+      "personalizacion": [
+        "Nombre",
+        "Forma: flor o estrella",
+        "Color de la letra"
+      ],
+      "descripcion": "Llavero con tu nombre y una flor o estrella, en el color que más te guste. Liviano y resistente, perfecto para las llaves, el bolso o la mochila, o como detalle para regalar. Resiste hasta 60 °C: evita dejarlo al sol dentro del carro.",
+      "foto": "fotos/llavero-nombre-flor-estrella.jpg",
+      "disponible": true,
+      "destacado": false,
+      "creado": 1792686968348
+    }
+  ]
 }
